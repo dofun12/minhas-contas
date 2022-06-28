@@ -11,8 +11,6 @@ public class Conta implements Serializable,DefaultModel {
 
    @Id
    @Column(name = "ID")
-   //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CONTA_SEQ")
-   //@SequenceGenerator(name = "CONTA_SEQ", sequenceName = "CONTA_SEQ", allocationSize = 1)
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 

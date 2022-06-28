@@ -29,4 +29,9 @@ public class ContaRestController {
       return ResponseEntity.ok(JsonResponse.ok(contaService.addConta(conta)));
    }
 
+   @PostMapping("/{ano}/{mes}")
+   public ResponseEntity<JsonResponse> addContaNoMes(@RequestBody Conta conta) {
+      return ResponseEntity.ok(JsonResponse.ok(contaService.addConta(conta)));
+   }
+
 }
