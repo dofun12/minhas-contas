@@ -1,0 +1,30 @@
+version: "3.3"
+services:
+  database:
+    container_name: minhascontas-db
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=contas
+      - MYSQL_ROOT_PASSWORD=contas_adm
+      - MYSQL_USER=contas
+      - MYSQL_PASSWORD=contas
+    volumes:
+      - mysql-volume:/var/lib/mysql
+  api:
+    container_name: minhascontas-api
+    image: lemanoman/minhas-contas
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DB_USER=root
+      - DB_PASSWORD=contas_adm
+      - DB_NAME=contas
+      - DB_HOST=database
+      - DB_PORT=3306
+      - DB_DDL=create
+    ports:
+      - "8085:8080"
+    depends_on: [database]
+volumes:
+  mysql-volume:
